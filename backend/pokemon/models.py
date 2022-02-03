@@ -75,3 +75,8 @@ class Pokemon(BaseModel):
 
     def __str__(self):
         return self.name
+
+    @property
+    def move_count(self):
+        return self.moves.count()
+

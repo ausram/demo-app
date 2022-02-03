@@ -11,11 +11,13 @@ class MoveSerializer(serializers.ModelSerializer):
 
 
 class PokemonSerializer(serializers.ModelSerializer):
+    id = serializers.CharField(read_only=True)
     moves = MoveSerializer(many=True)
 
     class Meta:
         model = Pokemon
         fields = (
+            'id',
             'name',
             'type1',
             'type2',
