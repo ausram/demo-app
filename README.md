@@ -5,8 +5,7 @@ A demo pokemon app
 
 ## Getting Started
 ### 1. Dependencies
-* Python 3.9.6
-````
+* Python 3.9.6``````
 
 ### 2. Installation
 

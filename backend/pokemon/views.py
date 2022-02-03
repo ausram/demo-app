@@ -38,23 +38,18 @@ class PokemonViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET', ], url_path=r'change-colour/(?P<pk>\d+)',)
     def change_colour(self, request, pk=None, *args, **kwargs):
-        pk = pk
-        if not pk:
-            payload = f"No id was provided"
+        try:
+            obj = Pokemon.objects.get(pk=pk)
+            if obj.type1 == Pokemon.GRASS:
+                payload = "#0fa63f"
+                status_code = status.HTTP_200_OK
+            else:
+                r = random.randint(0, 255)
+                g = random.randint(0, 255)
+                b = random.randint(0, 255)
+                payload = f"rgb({r}, {g}, {b})"
+                status_code = status.HTTP_200_OK
+        except Exception as e:
+            payload = f"An error occurred fetching pokemon data: {str(e)}"
             status_code = status.HTTP_400_BAD_REQUEST
-        else:
-            try:
-                obj = Pokemon.objects.get(pk=pk)
-                if obj.type1 == Pokemon.GRASS:
-                    payload = "#0fa63f"
-                    status_code = status.HTTP_200_OK
-                else:
-                    r = random.randint(0, 255)
-                    g = random.randint(0, 255)
-                    b = random.randint(0, 255)
-                    payload = f"rgb({r}, {g}, {b})"
-                    status_code = status.HTTP_200_OK
-            except Exception as e:
-                payload = f"An error occurred fetching pokemon data: {str(e)}"
-                status_code = status.HTTP_400_BAD_REQUEST
         return Response(data=payload, status=status_code)
