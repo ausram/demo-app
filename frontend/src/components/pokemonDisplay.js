@@ -40,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
 function PokemonDisplay (props) {
 
     const classes = useStyles();
-    var pokemon = props.pokemonData;
-    console.log(pokemon.types ? pokemon : null);
+    let pokemon = props.pokemonData;
 
     const capitalise = (string) => {
         return string[0].toUpperCase() + string.substring(1)
@@ -52,19 +51,15 @@ function PokemonDisplay (props) {
             return (
                 <div className={classes.root}>
                     <Grid container spacing={3}>
-
                         {/* // Name of Pokemon */}
                         <Grid item xs={12}>
                             <h2 className={classes.pokemonHeader}>{capitalise(pokemon.name)}</h2>
                         </Grid>
-                
                         <Grid container justifyContent="space-evenly">
-
                             {/* // Image */}
                             <Grid item xs={3} container justifyContent="space-evenly">
                                 <img src={pokemon.photo_url} height="225px" alt={`Image of ${pokemon.name}`} />
                             </Grid>
-
                             {/* // Stats */}
                             <Grid item xs={8} container justifyContent="space-evenly" alignItems="baseline">
                                 

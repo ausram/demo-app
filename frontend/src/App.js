@@ -1,21 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import 'axios';
-import PokemonDisplay from './components/pokemonDisplay';
+import axios from 'axios';
 
 // Components
 import PokemonSearch from './components/pokemonSearchBar';
-import axios from 'axios';
+import PokemonDisplay from './components/pokemonDisplay';
 
-// const pokemonAPI = 'https://pokeapi.co/api/v2/pokemon/';
 
 function App() {
 
     const [pokemonData, setPokemonData] = React.useState({});
 
     const searchPokemon = (pokemon) => {
-      axios.get(`http://localhost:8000/api/pokemon/` + pokemon + '/')
+        axios.get(`http://localhost:8000/api/pokemon/` + pokemon + '/')
              .then(result => {
                  setPokemonData(result.data);
             })
