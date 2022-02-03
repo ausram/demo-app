@@ -41,6 +41,8 @@ function PokemonDisplay (props) {
 
     const classes = useStyles();
     let pokemon = props.pokemonData;
+    let buttonColour = props.buttonColour;
+    console.log('new colour', props.buttonColour)
 
     const capitalise = (string) => {
         return string[0].toUpperCase() + string.substring(1)
@@ -51,15 +53,19 @@ function PokemonDisplay (props) {
             return (
                 <div className={classes.root}>
                     <Grid container spacing={3}>
+
                         {/* // Name of Pokemon */}
                         <Grid item xs={12}>
                             <h2 className={classes.pokemonHeader}>{capitalise(pokemon.name)}</h2>
                         </Grid>
+                
                         <Grid container justifyContent="space-evenly">
+
                             {/* // Image */}
                             <Grid item xs={3} container justifyContent="space-evenly">
                                 <img src={pokemon.photo_url} height="225px" alt={`Image of ${pokemon.name}`} />
                             </Grid>
+
                             {/* // Stats */}
                             <Grid item xs={8} container justifyContent="space-evenly" alignItems="baseline">
                                 
@@ -81,7 +87,7 @@ function PokemonDisplay (props) {
                                 </Grid>
                                 <Grid item style={{maxHeight: '410px', overflow: 'auto'}} xs={8} container justifyContent="space-evenly" alignItems="baseline">
                                     {pokemon.moves.map((move, idx) => {
-                                        return <Grid item xs={4}><Paper key={idx} className={classes.paper}>{capitalise(move.name)}</Paper></Grid>
+                                        return <Grid key={idx} item xs={4}><Paper key={idx} style={{backgroundColor: buttonColour}} className={classes.paper}>{capitalise(move.name)}</Paper></Grid>
                                     })}
                                 </Grid>
 
