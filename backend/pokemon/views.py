@@ -52,3 +52,19 @@ class PokemonViewSet(viewsets.ModelViewSet):
             payload = f"An error occurred fetching pokemon data: {str(e)}"
             status_code = status.HTTP_400_BAD_REQUEST
         return Response(data=payload, status=status_code)
+
+    @action(detail=False, methods=['GET', ], url_path=r'correct-choice/(?P<pk>\d+)',)
+    def change_colour(self, request, pk=None, *args, **kwargs):
+        try:
+            obj = Pokemon.objects.get(pk=pk)
+            if obj.name == 'Charizard':
+                payload = "Correct choice"
+                status_code = status.HTTP_200_OK
+            else:
+                if obj.name == 'Charmander':
+                    payload = "Acceptable"
+                    status_code = status.HTTP_200_OK
+        except Exception as e:
+            payload = f"Your choice is poor"
+            status_code = status.HTTP_400_BAD_REQUEST
+        return Response(data=payload, status=status_code)
