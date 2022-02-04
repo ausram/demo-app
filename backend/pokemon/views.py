@@ -52,3 +52,14 @@ class PokemonViewSet(viewsets.ModelViewSet):
             payload = f"An error occurred fetching pokemon data: {str(e)}"
             status_code = status.HTTP_400_BAD_REQUEST
         return Response(data=payload, status=status_code)
+
+    @action(detail=False, methods=['GET', ], url_path=r'pokemon-image/(?P<pk>\d+)',)
+    def PokemonImage(self, request, pk=None, *args, **kwargs):
+        try:
+            obj = Pokemon.objects.get(pk=pk)
+            payload = obj.photo_url
+            status_code = status.HTTP_200_OK
+        except Exception as e:
+            payload = f"An error occurred fetching pokemon data: {str(e)}"
+            status_code = status.HTTP_400_BAD_REQUEST
+        return Response(data=payload, status=status_code)
