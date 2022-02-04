@@ -10,12 +10,12 @@ A demo pokemon app
 ### 2. Installation
 
 * Set up virtual env:
-    * python3 -m venv ./venv
-    * source venv/bin/activate
+    * `python3 -m venv ./venv`
+    * `source venv/bin/activate`
 
 
 * Install requirements:
-    * pip3 install -r requirements.txt
+    * `pip3 install -r requirements.txt`
 
 ### 3. Define environment variables
 
