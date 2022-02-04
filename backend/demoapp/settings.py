@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'pokemon',
     'rest_framework',
+    'trainer'
 ]
 
 MIDDLEWARE = [
