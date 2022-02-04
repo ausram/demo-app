@@ -28,3 +28,6 @@ A demo pokemon app
 
 ---
 
+
+
+Gen 3 is the best
