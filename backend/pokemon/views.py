@@ -23,7 +23,6 @@ class PokemonViewSet(viewsets.ModelViewSet):
     # @action(detail=False, methods=['GET'], )
     def retrieve(self, request, pk=None, *args, **kwargs):
         pokemon = pk
-        print(pokemon, type(pokemon))
         if not pokemon:
             payload = "Giving a pokemon name might be a good idea"
             status_code = status.HTTP_404_NOT_FOUND

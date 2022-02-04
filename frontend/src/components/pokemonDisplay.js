@@ -53,7 +53,6 @@ function PokemonDisplay (props) {
             return (
                 <div className={classes.root}>
                     <Grid container spacing={3}>
-
                         {/* // Name of Pokemon */}
                         <Grid item xs={12}>
                             <h2 className={classes.pokemonHeader}>{capitalise(pokemon.name)}</h2>
@@ -62,32 +61,31 @@ function PokemonDisplay (props) {
                         <Grid container justifyContent="space-evenly">
 
                             {/* // Image */}
-                            <Grid item xs={3} container justifyContent="space-evenly">
+                            <Grid item xs={12} md={4} container justifyContent="space-evenly">
                                 <img src={pokemon.photo_url} height="225px" alt={`Image of ${pokemon.name}`} />
                             </Grid>
 
                             {/* // Stats */}
-                            <Grid item xs={8} container justifyContent="space-evenly" alignItems="baseline">
-                                
+                            <Grid item xs={12} md={8} container justifyContent="space-evenly" alignItems="baseline">
                                 {/* // Types */}
-                                <Grid item xs={4}>
+                                <Grid item xs={4} md={4}>
                                     <Paper className={classes.headingPaper}>Type: </Paper>
                                 </Grid>
-                                <Grid item xs={8} container justifyContent="space-evenly" alignItems="baseline">
+                                <Grid item xs={8} md={8}container justifyContent="space-evenly" alignItems="baseline">
                                        <Grid item xs ><Paper className={classes.paper}>{capitalise(pokemon.type1)}</Paper></Grid>
-                                    <Grid item xs >
+                                    <Grid item xs={12} md={6} >
                                         {pokemon.type2 ?
                                         <Paper className={classes.paper}>{capitalise(pokemon.type2)}</Paper> : null}
                                     </Grid>
                                 </Grid>
 
                                 {/* // Moves */}
-                                <Grid item xs={4}>
+                                <Grid item xs={4} md={4}>
                                     <Paper className={classes.headingPaper}>Moves: </Paper>
                                 </Grid>
                                 <Grid item style={{maxHeight: '410px', overflow: 'auto'}} xs={8} container justifyContent="space-evenly" alignItems="baseline">
                                     {pokemon.moves.map((move, idx) => {
-                                        return <Grid key={idx} item xs={4}><Paper key={idx} style={{backgroundColor: buttonColour}} className={classes.paper}>{capitalise(move.name)}</Paper></Grid>
+                                        return <Grid key={idx} item xs={6} md={4}><Paper key={idx} style={{backgroundColor: buttonColour}} className={classes.paper}>{capitalise(move.name)}</Paper></Grid>
                                     })}
                                 </Grid>
 

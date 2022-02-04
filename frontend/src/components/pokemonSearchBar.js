@@ -15,14 +15,15 @@ function PokemonSearch (props) {
         <div style={{display: 'flex'}}>
             <form noValidate autoComplete="off">
                 <TextField 
-                    style={{backgroundColor: 'lightgrey', margin: '0px 30px'}} 
+                    style={{backgroundColor: 'lightgrey', margin: '25px 30px'}}
                     id="pokemon-search-bar" 
                     label="Pokémon" 
                     variant="filled"
                     onChange={(e) => setPokemon(e.target.value)}
                 />
             </form>
-            <Button id="pokemon-search-button" variant="contained" size="large" onClick={findPokemon}>
+            <Button style={{margin: '25px 30px'}}
+                    id="pokemon-search-button" variant="contained" size="large" onClick={findPokemon}>
                 Catch
             </Button>
         </div>
