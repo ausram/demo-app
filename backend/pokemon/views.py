@@ -54,7 +54,7 @@ class PokemonViewSet(viewsets.ModelViewSet):
         return Response(data=payload, status=status_code)
 
     @action(detail=False, methods=['GET', ], url_path=r'pokemon-name/(?P<pk>\d+)', )
-    def change_colour(self, request, pk=None, *args, **kwargs):
+    def find_move(self, request, pk=None, *args, **kwargs):
         try:
             obj = Pokemon.objects.get(pk=pk)
             if 'Quick Attack' in obj.moves.first().name:
