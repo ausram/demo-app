@@ -15,7 +15,7 @@ url = "https://pokeapi.co/api/v2/pokemon/"
 def query_poke_api(pokemon: str):
     poke_url = f"{url}/{pokemon}/"
     try:
-        response = requests.get(poke_url)
+        response = requests.get(poke_url, timeout=1)
         response.raise_for_status()
         response_dict = json.loads(response.content.decode('utf-8'))
         return response_dict
